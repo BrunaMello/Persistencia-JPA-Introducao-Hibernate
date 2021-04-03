@@ -6,6 +6,10 @@ import javax.persistence.*;
 @Table(name = "categoria")
 public class Categoria {
 
+    public Categoria() {
+
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,4 +34,6 @@ public class Categoria {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+
 }
