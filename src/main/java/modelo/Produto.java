@@ -1,5 +1,7 @@
 package modelo;
 
+import modelo.Categoria;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -16,16 +18,22 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+
+    @Column(name = "nome_produto")
+    private String nomeProduto;
+
     private String descricao;
+
     private BigDecimal preco;
+
+    @Column(name = "data_cadastro")
     private LocalDate dataCadastro = LocalDate.now();
 
     @ManyToOne
     private Categoria categoria;
 
-    public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
-        this.nome = nome;
+    public Produto(String nomeProduto, String descricao, BigDecimal preco, Categoria categoria) {
+        this.nomeProduto = nomeProduto;
         this.descricao = descricao;
         this.preco = preco;
         this.categoria = categoria;
@@ -39,12 +47,12 @@ public class Produto {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeProduto() {
+        return nomeProduto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeProduto(String nome) {
+        this.nomeProduto = nome;
     }
 
     public String getDescricao() {

@@ -30,21 +30,21 @@ public class ProdutoDAO {
 
     public List<Produto> buscarPorNome(String nome) {
         // no lugar de :nome pode usar o ?1, sepois é so apontar a posicao
-        String jpql = "SELECT p FROM Produto p WHERE p.nome = :nome";
+        String jpql = "SELECT p FROM Produto p WHERE p.nomeProduto = :nome";
         return em.createQuery(jpql, Produto.class)
                 .setParameter("nome", nome)
                 .getResultList();
     }
 
     public List<Produto> buscarPorNomedaCategoria(String nome) {
-        String jpql = "SELECT p FROM Produto p WHERE p.categoria.nome = :nome";
+        String jpql = "SELECT p FROM Produto p WHERE p.categoria.nomeCategoria = :nome";
         return em.createQuery(jpql, Produto.class)
                 .setParameter("nome", nome)
                 .getResultList();
     }
 
     public BigDecimal buscarPrecoDoProdutoComNome(String nome) {
-        String jpql = "SELECT p.preco FROM Produto p WHERE p.nome = :nome";
+        String jpql = "SELECT p.preco FROM Produto p WHERE p.nomeProduto = :nome";
         return em.createQuery(jpql, BigDecimal.class)
                 .setParameter("nome", nome)
                 .getSingleResult();

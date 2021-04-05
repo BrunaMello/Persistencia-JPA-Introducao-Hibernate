@@ -3,7 +3,7 @@ package modelo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "categoria")
+@Table(name = "categorias")
 public class Categoria {
 
     public Categoria() {
@@ -13,10 +13,12 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
 
-    public Categoria(String nome) {
-        this.nome = nome;
+    @Column(name = "nome_categoria")
+    private String nomeCategoria;
+
+    public Categoria(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria;
     }
 
     public Long getId() {
@@ -27,12 +29,12 @@ public class Categoria {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeCategoria() {
+        return nomeCategoria;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeCategoria(String nome) {
+        this.nomeCategoria = nome;
     }
 
 

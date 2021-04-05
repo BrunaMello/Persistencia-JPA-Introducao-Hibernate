@@ -20,21 +20,21 @@ public class CadastroDeProduto {
         EntityManager em = JPAUtil.getEntityManager();
         ProdutoDAO produtoDAO = new ProdutoDAO(em);
 
-//        Produto p = produtoDAO.buscarPorId(1l);
+//        Produto.java p = produtoDAO.buscarPorId(1l);
 //        System.out.println("Nome do produto: " + p.getNome());
 //        System.out.println("Valor do produto: " +p.getPreco());
 //
-//        List<Produto> todos = produtoDAO.buscarTodos();
+//        List<Produto.java> todos = produtoDAO.buscarTodos();
 //        todos.forEach(p2 -> System.out.println("Lista de Produtos: " + p2.getNome() + " ID: " + p2.getId()));
 //
-//        List<Produto> buscarNome = produtoDAO.buscarPorNome("Iphone 12pro");
+//        List<Produto.java> buscarNome = produtoDAO.buscarPorNome("Iphone 12pro");
 //        buscarNome.forEach(p3 -> System.out.println("O produto é: " + p3.getNome()));
 
         List<Produto> buscarNomeDaCategoria = produtoDAO.buscarPorNomedaCategoria("CELULARES");
-        buscarNomeDaCategoria.forEach(p4 -> System.out.println("O produto é: " + p4.getNome()));
+        buscarNomeDaCategoria.forEach(p4 -> System.out.println("O produto é: " + p4.getNomeProduto()));
 
         BigDecimal preco = produtoDAO.buscarPrecoDoProdutoComNome("Iphone 12pro");
-        System.out.println("O preco do Produto é: " + preco);
+        System.out.println("O preco do Produto.java é: " + preco);
 
 
     }
