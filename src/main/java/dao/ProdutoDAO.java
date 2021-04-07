@@ -19,7 +19,7 @@ public class ProdutoDAO {
     }
 
     public Produto buscarPorId(Long id) {
-        return em.find(Produto.class, 1l);
+        return em.find(Produto.class, id);
     }
 
     public List<Produto> buscarTodos() {
@@ -37,8 +37,7 @@ public class ProdutoDAO {
     }
 
     public List<Produto> buscarPorNomedaCategoria(String nome) {
-        String jpql = "SELECT p FROM Produto p WHERE p.categoria.nomeCategoria = :nome";
-        return em.createQuery(jpql, Produto.class)
+        return em.createNamedQuery("Produto.produtosPorCategoria", Produto.class)
                 .setParameter("nome", nome)
                 .getResultList();
     }
@@ -49,5 +48,7 @@ public class ProdutoDAO {
                 .setParameter("nome", nome)
                 .getSingleResult();
     }
+
+
 
 }
