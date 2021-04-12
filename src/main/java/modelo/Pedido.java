@@ -1,9 +1,6 @@
 package modelo;
 
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
-import org.hibernate.dialect.ProgressDialect;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -26,7 +23,7 @@ public class Pedido {
     @Column(name = "valor_total")
     private BigDecimal valorTotal = BigDecimal.ZERO;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
     //mapeamento manytomany simples exemplo se for complexo tem que fazer entidade
@@ -84,5 +81,16 @@ public class Pedido {
 
     public void setCliente(Cliente nome_cliente) {
         this.cliente = nome_cliente;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "id=" + id +
+                ", dataPedido=" + dataPedido +
+                ", valorTotal=" + valorTotal +
+                ", cliente=" + cliente +
+                ", itens=" + itens +
+                '}';
     }
 }

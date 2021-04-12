@@ -1,7 +1,6 @@
 package dao;
 
 import modelo.Categoria;
-import modelo.Produto;
 
 import javax.persistence.EntityManager;
 
@@ -25,4 +24,6 @@ public class CategoriaDAO {
         categoria = em.merge(categoria);
         this.em.remove(categoria);
     }
+
+
 }
