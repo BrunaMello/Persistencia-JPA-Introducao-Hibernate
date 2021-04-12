@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "produtos")
 @NamedQuery(name = "Produto.produtosPorCategoria", query = "SELECT p FROM Produto p WHERE p.categoria.nomeCategoria = :nome")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Produto {
 
     public Produto(){
@@ -30,6 +31,8 @@ public class Produto {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Categoria categoria;
+
+
 
     public Produto(String nomeProduto, String descricao, BigDecimal preco, Categoria categoria) {
         this.nomeProduto = nomeProduto;

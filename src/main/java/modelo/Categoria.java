@@ -1,6 +1,8 @@
 package modelo;
 
-import javax.persistence.*;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "categorias")
@@ -10,32 +12,20 @@ public class Categoria {
 
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EmbeddedId
+    private CategoriaId id;
 
-    @Column(name = "nome_categoria")
-    private String nomeCategoria;
 
     public Categoria(String nomeCategoria) {
-        this.nomeCategoria = nomeCategoria;
+        this.id = new CategoriaId(nomeCategoria, "xpto");
     }
 
-    public Long getId() {
-        return id;
+    public String getNomeCategoria(){
+        return this.id.getNome();
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public String getNomeCategoria() {
-        return nomeCategoria;
-    }
 
-    public void setNomeCategoria(String nome) {
-        this.nomeCategoria = nome;
-    }
 
 
 }

@@ -15,6 +15,7 @@ public class TesteCriteria {
 
         produtoDAO.buscaPorProdutoComCriteria(null, null, LocalDate.now());
 
-
     }
+
+
 }
